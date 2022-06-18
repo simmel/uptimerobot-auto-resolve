@@ -10,3 +10,14 @@ So the idea is to:
 * Monitor a mailbox
 * When we get `Monitor is UP` mails
 * Remove that and the corresponding `Monitor is DOWN` mail
+
+## Usage
+
+```console
+$ cat > .env <<EOF
+SERVER=imap.domain.tld
+USERNAME=username
+PASSWORD=password
+EOF
+$ docker compose run --rm imapfilter
+```
