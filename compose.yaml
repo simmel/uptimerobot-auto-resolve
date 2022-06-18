@@ -1,0 +1,11 @@
+services:
+  imapfilter:
+    build: .
+    env_file: .env
+    configs:
+      - source: imapfilter
+        target: /srv/.imapfilter/config.lua
+
+configs:
+  imapfilter:
+    file: ./imapfilter.lua
