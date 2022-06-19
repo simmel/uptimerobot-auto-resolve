@@ -10,3 +10,11 @@ if not server or not username or not password then
 end
 
 print("login to " .. server .. " as: " .. username .. ":" .. password)
+
+account = IMAP {
+  server = server,
+  username = username,
+  password = password,
+  port = 993,
+  ssl = 'auto'
+}
