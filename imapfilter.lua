@@ -18,3 +18,11 @@ account = IMAP {
   port = 993,
   ssl = 'auto'
 }
+
+results = account.INBOX:is_unseen():contain_subject("Monitor is"):contain_from("@uptimerobot.com")
+
+for _, message in ipairs(results) do
+  print(message)
+  print(mailbox[uid]:fetch_field("subject"))
+  local mailbox, uid = table.unpack(message)
+end
