@@ -12,7 +12,7 @@ if not server or not username or not password then
   os.exit(1)
 end
 
-print("login to " .. server .. " as: " .. username .. ":" .. password)
+print("login to " .. server .. " as: " .. username)
 
 account = IMAP {
   server = server,
