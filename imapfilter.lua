@@ -25,7 +25,10 @@ account = IMAP {
 results = account.INBOX:is_unseen():contain_subject("Monitor is"):contain_from("@uptimerobot.com")
 
 for _, message in ipairs(results) do
-  print(message)
-  print(mailbox[uid]:fetch_field("subject"))
   local mailbox, uid = table.unpack(message)
+  local subject = string.gsub(mailbox[uid]:fetch_field("subject"), "Subject: ", "")
+  local success, check = regex_search('^Monitor is UP: (.*)$', subject)
+  if success then
+    print(check .. " is UP deleting all mails matching")
+  end
 end
