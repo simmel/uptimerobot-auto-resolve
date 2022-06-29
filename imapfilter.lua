@@ -1,4 +1,7 @@
 options.charset = 'UTF-8'
+-- Setting this true enables cert pinning and that's not what we want. We
+-- "trust" the CAs.
+options.certificates = false
 
 local server = os.getenv("SERVER")
 local username = os.getenv("USERNAME")
