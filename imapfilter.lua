@@ -30,5 +30,7 @@ for _, message in ipairs(results) do
   local success, check = regex_search('^Monitor is UP: (.*)$', subject)
   if success then
     print(check .. " is UP deleting all mails matching")
+    local to_delete = results:match_message("Monitor is (UP|DOWN): " .. check)
+    to_delete:mark_deleted()
   end
 end
