@@ -39,4 +39,7 @@ function uptimerobot()
   end
 end
 
-uptimerobot()
+while true do
+  uptimerobot()
+  account.INBOX:enter_idle()
+end
