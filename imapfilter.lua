@@ -22,17 +22,21 @@ account = IMAP {
   ssl = 'auto'
 }
 
-results = account.INBOX:is_unseen():contain_subject("Monitor is"):contain_from("@uptimerobot.com")
+function uptimerobot()
+  results = account.INBOX:is_unseen():contain_subject("Monitor is"):contain_from("@uptimerobot.com")
 
-for _, message in ipairs(results) do
-  local mailbox, uid = table.unpack(message)
-  local subject = string.gsub(mailbox[uid]:fetch_field("subject"), "Subject: ", "")
-  local success, check = regex_search('^Monitor is UP: (.*)$', subject)
-  if success then
-    print(check .. " is UP deleting all mails matching")
-    local to_delete = results:match_message("Monitor is (UP|DOWN): " .. check)
-    to_delete:mark_deleted()
-    -- TODO: Ensure "Monitor is UP" is the latest message and only then delete
-    -- the "thread"
+  for _, message in ipairs(results) do
+    local mailbox, uid = table.unpack(message)
+    local subject = string.gsub(mailbox[uid]:fetch_field("subject"), "Subject: ", "")
+    local success, check = regex_search('^Monitor is UP: (.*)$', subject)
+    if success then
+      print(check .. " is UP deleting all mails matching")
+      local to_delete = results:match_message("Monitor is (UP|DOWN): " .. check)
+      to_delete:mark_deleted()
+      -- TODO: Ensure "Monitor is UP" is the latest message and only then delete
+      -- the "thread"
+    end
   end
 end
+
+uptimerobot()
