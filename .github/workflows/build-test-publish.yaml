@@ -35,11 +35,9 @@ jobs:
         with:
           push: false
           tags: ${{ steps.meta.outputs.tags }}
-      - uses: addnab/docker-run-action@v3
-        with:
-          image: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
-          shell: 'sleep 0.1; exec rlwrap imapfilter "$0" "$@"'
-          run: -V
+      - name: Test
+        run: |
+          docker run --rm ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest -V
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
