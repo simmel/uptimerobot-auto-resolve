@@ -1,5 +1,5 @@
 services:
-  imapfilter:
+  vanilla-imap-baby:
     build: .
     env_file: .env
     configs:
