@@ -39,7 +39,25 @@ function uptimerobot()
   end
 end
 
+function healthchecks()
+  results = account.INBOX:is_unseen():contain_from("healthchecks.io@healthchecks.io"):match_subject("^(UP|DOWN) \\|")
+
+  for _, message in ipairs(results) do
+    local mailbox, uid = table.unpack(message)
+    local subject = string.gsub(mailbox[uid]:fetch_field("subject"), "Subject: ", "")
+    local success, check = regex_search('^UP \\| (.*)$', subject)
+    if success then
+      print(check .. " is UP deleting all mails matching")
+      local to_delete = results:match_subject("^(UP|DOWN) \\| " .. check)
+      to_delete:mark_deleted()
+      -- TODO: Ensure "UP | " is the latest message and only then delete the
+      -- "thread"
+    end
+  end
+end
+
 while true do
   uptimerobot()
+  healthchecks()
   account.INBOX:enter_idle()
 end
