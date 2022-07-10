@@ -14,6 +14,4 @@ USER 1000
 
 COPY ./imapfilter.lua /srv/.imapfilter/config.lua
 
-# https://github.com/moby/moby/issues/25450
-# https://github.com/moby/moby/issues/28009
-ENTRYPOINT sleep 0.1; exec rlfe imapfilter "$0" "$@"
+ENTRYPOINT ["rlfe", "imapfilter"]
