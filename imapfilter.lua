@@ -31,7 +31,7 @@ function uptimerobot()
     local success, check = regex_search('^Monitor is UP: (.*)$', subject)
     if success then
       print(check .. " is UP deleting all mails matching")
-      local to_delete = results:match_message("Monitor is (UP|DOWN): " .. check)
+      local to_delete = results:match_subject("Monitor is (UP|DOWN): " .. check)
       to_delete:mark_deleted()
       -- TODO: Ensure "Monitor is UP" is the latest message and only then delete
       -- the "thread"
