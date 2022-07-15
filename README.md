@@ -2,7 +2,7 @@
 
 > And if there was a problem, yo, I'll solve it
 >
-> — <cite>Vanilla Ice</cite>
+> — Vanilla Ice
 
 I've had too many network issues where I host things which means that I get
 email storms from e.g. UptimeRobot that all services are "DOWN" and later "UP".
