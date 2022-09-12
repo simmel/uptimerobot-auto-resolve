@@ -3,6 +3,7 @@ FROM debian:buster-slim
 RUN apt-get -qq update && apt-get -qq install \
       imapfilter \
       # FIXME Remove lua dep? It's only ~800kB and useful for debugging
+      lua-socket \
       lua5.2 \
       rlfe \
       && chown -R 1000:1000 /srv \
