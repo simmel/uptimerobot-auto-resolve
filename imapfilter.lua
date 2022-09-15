@@ -102,7 +102,7 @@ function uptimekuma()
       print(check .. " is UP deleting all mails matching")
       check = moar_qp(check)
       local to_delete = results:match_subject("=5B" .. check .."=5D" .. regx)
-      to_delete:mark_flagged()
+      to_delete:mark_delete()
       -- TODO: Ensure "UP | " is the latest message and only then delete the
       -- "thread"
     end
