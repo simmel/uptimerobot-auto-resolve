@@ -60,7 +60,7 @@ end
 
 function uptimekuma()
 
-  local regx = "(?s)_=5B(=E2=9C=85_Up.*?|=F0=9F=94=B4.*?Down).*?=5D"
+  local regx = "(?s)_=5B(=E2=9C=85_Up.*?|=F0=9F=94=B4.*?D.*?o.*?w.*?n).*?=5D"
   results = account.INBOX:is_unseen():match_subject(regx)
 
   for _, message in ipairs(results) do
