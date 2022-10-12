@@ -88,7 +88,7 @@ function uptimekuma()
           end
         end
 
-        if d == " " then
+        if c == " " then
           return "_"
         else
           return string.format("=%X", string.byte(c))
