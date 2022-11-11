@@ -6,6 +6,7 @@ RUN apt-get -qq update && apt-get -qq install \
       lua-socket \
       lua5.2 \
       rlfe \
+      wget \
       && chown -R 1000:1000 /srv \
       && rm -rf /var/lib/apt/lists/*
 
