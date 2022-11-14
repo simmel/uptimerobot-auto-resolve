@@ -74,7 +74,7 @@ function uptimekuma()
     if success then
       print(check .. " is UP deleting all mails matching")
       local to_delete = results:contain_subject("[" .. check .."] [")
-      to_delete:mark_delete()
+      to_delete:mark_deleted()
       -- TODO: Ensure "UP | " is the latest message and only then delete the
       -- "thread"
     end
