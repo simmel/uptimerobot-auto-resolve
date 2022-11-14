@@ -19,6 +19,7 @@ So the idea is to:
 
 * [UptimeRobot](https://uptimerobot.com)
 * [Healthchecks.io](https://healthchecks.io)
+* [Uptime Kuma](https://github.com/louislam/uptime-kuma)
 
 ## Usage
 
